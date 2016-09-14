@@ -1,0 +1,27 @@
+:root {
+    --red: red;
+}
+
+.root {
+    text-align: center;
+}
+
+.logo {
+    height: 80px;
+}
+
+.header {
+    background-color: color(hsla(0, 100%, 0%, 1) alpha(.5));
+    color: white;
+    padding: 24px;
+}
+
+.intro {
+    color: gray(230);
+    font: 700 31px/40px sans-serif;
+    margin-top: 16px;
+
+    &:hover {
+        color: var(--red);
+    }
+}

@@ -1,0 +1,16 @@
+/* stylelint-disable selector-no-type */
+html {
+    box-sizing: border-box;
+}
+/* stylelint-enable selector-no-type */
+
+/* stylelint-disable selector-no-universal */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+/* stylelint-enable selector-no-universal */

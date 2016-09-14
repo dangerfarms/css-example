@@ -11,7 +11,7 @@
 }
 
 .header {
-    background-color: color(hsla(0, 100%, 0%, 1) alpha(.5));
+    background-color: color(hsla(0, 100%, 0%, 1) alpha(0.5));
     color: white;
     padding: 24px;
 }

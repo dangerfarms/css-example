@@ -11,6 +11,7 @@ var nesting = require('postcss-nesting');
 var customProperties = require('postcss-custom-properties');
 var colorFunction = require('postcss-color-function');
 var colorGray = require('postcss-color-gray');
+var postcssImport = require('postcss-import');
 
 
 // This is the development configuration.

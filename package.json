@@ -69,8 +69,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "eslint": "eslint src/**/*.js",
-    "eslint:strict": "eslint src/**/*.js --max-warnings 0",
+    "eslint": "eslint src",
+    "eslint:strict": "eslint src --max-warnings 0",
     "stylelint": "stylelint src/**/*.css",
     "test": "mocha src/**/*.spec.js --opts ./config/mocha.opts",
     "test:watch": "mocha src/**/*.spec.js --opts ./config/mochaWatch.opts"

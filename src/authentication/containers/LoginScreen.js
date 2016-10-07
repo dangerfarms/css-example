@@ -8,7 +8,7 @@ function mapDispatchToProps(dispatch) {
         onLogin: function onLogin() {
             return dispatch(login());
         }
-    }
+    };
 }
 
 export default connect(null, mapDispatchToProps)(LoginScreen);

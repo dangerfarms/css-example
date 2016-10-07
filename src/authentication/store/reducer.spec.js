@@ -31,4 +31,4 @@ describe('Authentication reducer', () => {
         });
     });
 
-})
+});

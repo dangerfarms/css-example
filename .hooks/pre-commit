@@ -1,4 +1,9 @@
 #!/bin/bash
+
+ERROR=$(tput setaf 1);
+INFO=$(tput setaf 2);
+RESET=$(tput sgr0);
+
 require_no_unstaged_files_for_commit () {
     git rev-parse --verify HEAD >/dev/null || exit 1
     git update-index -q --ignore-submodules --refresh
@@ -6,40 +11,41 @@ require_no_unstaged_files_for_commit () {
 
     if ! git diff-files --quiet --ignore-submodules
     then
-        echo >&2 "Cannot $1: You have unstaged changes."
+        echo >&2 "${ERROR}✖${RESET} Cannot $1: you have unstaged changes."
         err=1
     fi
 
     if [ $err = 1 ]
     then
+        echo ""
         test -n "$2" && echo >&2 "$2"
         exit 1
     fi
 }
 
-require_no_unstaged_files_for_commit commit "Please add or stash them before committing.
+require_no_unstaged_files_for_commit commit "Please add or stash your changes before committing.
 Note: 'git stash --keep-index' will stash only your unstaged files."
 
-npm run eslint
+npm run -s eslint:strict
 if [ $? != 0 ]; then
-    echo "ESLint check failed. Fix it and don't forget to 'git add <file>' before committing."
+    echo "${ERROR}✖${RESET} ESLint check failed. Fix it and don't forget to 'git add <file>' before committing."
     exit 1
 else
-    echo "ESLint check passed"
+    echo "${INFO}✓${RESET} ESLint check passed"
 fi
 
-npm run stylelint
+npm run -s stylelint
 if [ $? != 0 ]; then
-    echo "Stylelint check failed. Fix it and don't forget to 'git add <file>' before committing."
+    echo "${ERROR}✖${RESET} Stylelint check failed. Fix it and don't forget to 'git add <file>' before committing."
     exit 1
 else
-    echo "Stylelint check passed"
+    echo "${INFO}✓${RESET} Stylelint check passed"
 fi
 
-npm run test
+npm run -s test
 if [ $? != 0 ]; then
-    echo "Tests failed. Fix it and don't forget to 'git add <file>' before committing."
+    echo "${ERROR}✖${RESET} Tests failed. Fix it and don't forget to 'git add <file>' before committing."
     exit 1
 else
-    echo "Tests passed"
+    echo "${INFO}✓${RESET} Tests passed"
 fi

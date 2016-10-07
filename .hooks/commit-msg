@@ -1,6 +1,10 @@
 #!/bin/bash
+
+WARNING=$(tput setaf 3);
+RESET=$(tput sgr0);
+
 if ! [[ $(head -n 1 $1) =~ ^#[0-9]+:[[:space:]][A-Z].*|^Merge.* ]]; then
-    echo "Your commit message does not conform to the required pattern."
+    echo "${WARNING}!${RESET} Your commit message does not conform to the required pattern."
     echo "Expected pattern: '#<issue-number>: <Imperative message>'"
     echo "Example: '#123: Add profile view'"
     exec < /dev/tty

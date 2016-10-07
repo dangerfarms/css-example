@@ -1,0 +1,45 @@
+#!/bin/bash
+require_no_unstaged_files_for_commit () {
+    git rev-parse --verify HEAD >/dev/null || exit 1
+    git update-index -q --ignore-submodules --refresh
+    err=0
+
+    if ! git diff-files --quiet --ignore-submodules
+    then
+        echo >&2 "Cannot $1: You have unstaged changes."
+        err=1
+    fi
+
+    if [ $err = 1 ]
+    then
+        test -n "$2" && echo >&2 "$2"
+        exit 1
+    fi
+}
+
+require_no_unstaged_files_for_commit commit "Please add or stash them before committing.
+Note: 'git stash --keep-index' will stash only your unstaged files."
+
+npm run eslint
+if [ $? != 0 ]; then
+    echo "ESLint check failed. Fix it and don't forget to 'git add <file>' before committing."
+    exit 1
+else
+    echo "ESLint check passed"
+fi
+
+npm run stylelint
+if [ $? != 0 ]; then
+    echo "Stylelint check failed. Fix it and don't forget to 'git add <file>' before committing."
+    exit 1
+else
+    echo "Stylelint check passed"
+fi
+
+npm run test
+if [ $? != 0 ]; then
+    echo "Tests failed. Fix it and don't forget to 'git add <file>' before committing."
+    exit 1
+else
+    echo "Tests passed"
+fi

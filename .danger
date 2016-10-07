@@ -1,0 +1,82 @@
+#!/bin/bash
+BOLD=$(tput bold);
+ERROR=$(tput setaf 1);
+WARNING=$(tput setaf 3);
+INFO=$(tput setaf 2);
+RESET=$(tput sgr0);
+
+
+# =========================================================
+# Step 1: Check developer's system is good for project
+# =========================================================
+COUNTER=0;
+echo "${INFO}STEP 1: HEALTH CHECK"
+echo "${RESET}First check that we have the danger farms tool-set installed."
+echo -n "${RESET}nvm..."
+if [ ! -d ~/.nvm/ ]; then
+  echo "${ERROR} not installed."
+  echo "${WARNING}Install for your OS here: https://github.com/creationix/nvm#installation"
+  echo "For usage: https://github.com/creationix/nvm#usage"
+  echo "If you installed somewhere other than ~/.nvm .... why? Convention is almost always a good thing."
+  COUNTER=$[$COUNTER +1]
+else
+  echo " installed"
+fi
+
+echo -n "${RESET}node..."
+command -v node >/dev/null 2>&1;
+if [ $? != 0 ]; then
+  echo "${ERROR} not installed."
+  echo "${WARNING}You either have not:"
+  echo "a) used nvm to install a version of node e.g. nvm install stable"
+  echo "b) set a default verision of node to use e.g. nvm alias default stable && (source ~/.bashrc [linux] or source ~/.bash_profile [mac])"
+  COUNTER=$[$COUNTER +1]
+else
+  echo " installed"
+fi
+
+if [ $COUNTER != 0 ]; then
+  echo "${ERROR}Some dependencies missing. Please follow installation instructions above."
+  echo "${RESET}"
+  exit 1;
+fi
+
+echo "System: ${INFO}[OK]${RESET}"
+echo "${RESET}"
+
+
+# =========================================================
+# Step 2: Adding git hooks to ensure we are awesome developers
+# =========================================================
+echo "${INFO}STEP 2: GIT HOOKS${RESET}"
+
+rm -rf .git/hooks;
+ln -s $(pwd)/.hooks .git/hooks
+
+echo "Installed."
+echo "${RESET}"
+
+
+# =========================================================
+# Step 3: Setting 'origin development' as base
+# =========================================================
+echo "${INFO}STEP 3: SET GIT UPSTREAM${RESET}"
+git branch --set-upstream-to=origin/development development;
+echo ""
+
+
+# =========================================================
+# Step 4: Installing dependencies
+# =========================================================
+echo "${INFO}STEP 4: INSTALLING DEPENDENCIES${RESET}"
+npm install && npm prune;
+
+echo "Setup complete.
+
+Some commands to get you started:
+- 'npm start' to run the dev server.
+- 'npm test' to run unit tests.
+- 'npm run eslint' to lint JS code.
+- 'npm run stylelint' to lint CSS code.
+
+Inspect package.json for more commands.";

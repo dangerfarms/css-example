@@ -6,7 +6,6 @@
     "autoprefixer": "6.4.0",
     "babel-core": "6.14.0",
     "babel-eslint": "6.1.2",
-    "babel-jest": "15.0.0",
     "babel-loader": "6.2.5",
     "babel-plugin-transform-class-properties": "6.11.5",
     "babel-plugin-transform-object-rest-spread": "6.8.0",
@@ -24,7 +23,6 @@
     "detect-port": "1.0.0",
     "eslint": "3.4.0",
     "eslint-loader": "1.5.0",
-    "eslint-plugin-flowtype": "2.11.4",
     "eslint-plugin-import": "1.12.0",
     "eslint-plugin-jsx-a11y": "2.2.1",
     "eslint-plugin-react": "5.2.2",
@@ -64,30 +62,10 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "jest --watch --env=jsdom",
-    "lint": "stylelint src/**/*.css"
+    "eslint": "eslint **/*.js",
+    "stylelint": "stylelint src/**/*.css"
   },
   "eslintConfig": {
     "extends": "./config/eslint.js"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "jsx",
-      "js",
-      "json"
-    ],
-    "moduleNameMapper": {
-      "^[./a-zA-Z0-9$_-]+\\.(jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm)$": "<rootDir>/config/jest/FileStub.js",
-      "^[./a-zA-Z0-9$_-]+\\.css$": "<rootDir>/config/jest/CSSStub.js"
-    },
-    "scriptPreprocessor": "<rootDir>/config/jest/transform.js",
-    "setupFiles": [
-      "<rootDir>/config/polyfills.js"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/(build|docs|node_modules)/"
-    ],
-    "testEnvironment": "node",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$"
   }
 }

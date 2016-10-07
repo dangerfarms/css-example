@@ -1,11 +1,16 @@
-var path = require('path');
 var autoprefixer = require('autoprefixer');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
+var nesting = require('postcss-nesting');
+var customProperties = require('postcss-custom-properties');
+var colorFunction = require('postcss-color-function');
+var colorGray = require('postcss-color-gray');
 var url = require('url');
-var paths = require('./paths');
+var webpack = require('webpack');
+
 var env = require('./env');
+var paths = require('./paths');
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
@@ -115,7 +120,7 @@ module.exports = {
         // Webpack 1.x uses Uglify plugin as a signal to minify *all* the assets
         // including CSS. This is confusing and will be removed in Webpack 2:
         // https://github.com/webpack/webpack/issues/283
-        loader: ExtractTextPlugin.extract('style', 'css?-autoprefixer!postcss')
+        loader: ExtractTextPlugin.extract('style', 'css?-autoprefixer&modules&localIdentName=[name]__[local]__[hash:base64:5]!postcss')
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
@@ -174,14 +179,15 @@ module.exports = {
   // We use PostCSS for autoprefixing only.
   postcss: function() {
     return [
+      nesting(),
+      customProperties(),
+      colorFunction(),
+      colorGray(),
       autoprefixer({
         browsers: [
-          '>1%',
-          'last 4 versions',
-          'Firefox ESR',
-          'not ie < 9', // React doesn't support IE8 anyway
+          'last 2 versions'
         ]
-      }),
+      })
     ];
   },
   plugins: [

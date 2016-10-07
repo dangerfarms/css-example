@@ -1,16 +1,16 @@
-var path = require('path');
 var autoprefixer = require('autoprefixer');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-var WatchMissingNodeModulesPlugin = require('../scripts/utils/WatchMissingNodeModulesPlugin');
-var paths = require('./paths');
-var env = require('./env');
-
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
 var nesting = require('postcss-nesting');
 var customProperties = require('postcss-custom-properties');
 var colorFunction = require('postcss-color-function');
 var colorGray = require('postcss-color-gray');
+var webpack = require('webpack');
+
+var WatchMissingNodeModulesPlugin = require('../scripts/utils/WatchMissingNodeModulesPlugin');
+var env = require('./env');
+var paths = require('./paths');
 
 
 // This is the development configuration.
@@ -165,7 +165,6 @@ module.exports = {
     configFile: path.join(__dirname, 'eslint.js'),
     useEslintrc: false
   },
-  // We use PostCSS for autoprefixing only.
   postcss: function() {
     return [
       nesting(),

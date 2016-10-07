@@ -18,19 +18,6 @@ var DEFAULT_PORT = process.env.PORT || 3000;
 var compiler;
 var handleCompile;
 
-// You can safely remove this after ejecting.
-// We only use this block for testing of Create React App itself:
-var isSmokeTest = process.argv.some(arg => arg.indexOf('--smoke-test') > -1);
-if (isSmokeTest) {
-  handleCompile = function (err, stats) {
-    if (err || stats.hasErrors() || stats.hasWarnings()) {
-      process.exit(1);
-    } else {
-      process.exit(0);
-    }
-  };
-}
-
 // Some custom utilities to prettify Webpack output.
 // This is a little hacky.
 // It would be easier if webpack provided a rich error object.
@@ -169,7 +156,7 @@ function onProxyError(proxy) {
       ' from ' + chalk.cyan(host) + ' to ' + chalk.cyan(proxy) + '.'
     );
     console.log(
-      'See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (' + 
+      'See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (' +
       chalk.cyan(err.code) + ').'
     );
     console.log();
@@ -278,7 +265,6 @@ function runDevServer(port, protocol) {
     clearConsole();
     console.log(chalk.cyan('Starting the development server...'));
     console.log();
-    openBrowser(port, protocol);
   });
 }
 

@@ -13,13 +13,12 @@ module.exports = {
   parser: 'babel-eslint',
 
   // import plugin is temporarily disabled, scroll below to see why
-  plugins: [/*'import', */'flowtype', 'jsx-a11y', 'react'],
+  plugins: [/*'import', */'jsx-a11y', 'react'],
 
   env: {
     browser: true,
     commonjs: true,
     es6: true,
-    jest: true,
     node: true
   },
 
@@ -187,10 +186,5 @@ module.exports = {
     'jsx-a11y/img-has-alt': 'warn',
     'jsx-a11y/img-redundant-alt': 'warn',
     'jsx-a11y/no-access-key': 'warn',
-
-    // https://github.com/gajus/eslint-plugin-flowtype
-    'flowtype/define-flow-type': 'warn',
-    'flowtype/require-valid-file-annotation': 'warn',
-    'flowtype/use-flow-type': 'warn'
   }
 };

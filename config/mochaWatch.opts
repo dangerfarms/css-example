@@ -1,0 +1,3 @@
+--compilers js:babel-core/register
+--watch
+--watch-extensions js

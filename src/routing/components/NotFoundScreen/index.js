@@ -1,7 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router';
-import {urls} from '../../';
 
+import {Link} from '../../../common/components';
+import {urls} from '../../index'; // This is a bit confusing :( Hate relative imports!
 import styles from './styles.css';
 
 export default function NotFoundScreen() {

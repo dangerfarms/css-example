@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {Link} from '../../../common/components';
 import styles from './styles.css';
 
 export default function LoginScreen() {
@@ -16,7 +17,7 @@ export default function LoginScreen() {
                 </div>
                 <div className={styles.formFooter}>
                     <p className={styles.formFooterText}>
-                        Help: <a>email</a> or <a>password</a>
+                        Help: <Link>email</Link> or <Link>password</Link>
                     </p>
                     <button className={styles.submitButton} type='button'>Log in</button>
                 </div>

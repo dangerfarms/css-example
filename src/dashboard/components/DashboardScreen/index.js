@@ -3,7 +3,7 @@ import React from 'react';
 import logo from './logo.svg';
 import styles from './styles.css';
 
-export default function Root() {
+export default function DashboardScreen() {
     return (
         <div className={styles.root}>
         <div className={styles.header}>

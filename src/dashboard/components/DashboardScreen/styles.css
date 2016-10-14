@@ -15,13 +15,3 @@
     color: white;
     padding: 24px;
 }
-
-.intro {
-    color: gray(230);
-    font: 700 31px/40px sans-serif;
-    margin-top: 16px;
-
-    &:hover {
-        color: var(--red);
-    }
-}

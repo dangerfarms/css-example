@@ -7,10 +7,10 @@ import ReactDOM from 'react-dom';
  */
 import './fonts.css';
 import './index.css';
-import App from './containers/App';
+import Root from './Root';
 
 
 ReactDOM.render(
-  <App />,
+  <Root />,
   document.getElementById('root')
 );

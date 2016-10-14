@@ -10,6 +10,3 @@ export default function createStore() {
 
     return createReduxStore(reducer, applyMiddleware(thunk));
 }
-
-
-

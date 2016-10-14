@@ -19,7 +19,9 @@ export default function LoginScreen() {
                     <p className={styles.formFooterText}>
                         Help: <Link>email</Link> or <Link>password</Link>
                     </p>
-                    <button className={styles.submitButton} type='button'>Log in</button>
+                    <button className={styles.submitButton} type='button'>
+                        <label className={styles.submitButtonLabel}>Log in</label>
+                    </button>
                 </div>
             </form>
         </div>

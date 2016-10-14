@@ -2,7 +2,9 @@ module.exports = {
   'extends': 'stylelint-config-standard',
   'rules': {
     'at-rule-no-vendor-prefix': true,
-    'at-rule-whitelist': [],
+    'at-rule-whitelist': [
+        'font-face'
+    ],
     'color-named': 'always-where-possible',
     'color-no-hex': true,
     'custom-media-pattern': '^[a-z]+[a-zA-Z]*$',
@@ -22,9 +24,11 @@ module.exports = {
     'function-whitelist': [
       'alpha',
       'color',
+      'format',
       'gray',
       'hsl',
       'hsla',
+      'url',
       'var'
     ],
     'indentation': 4,

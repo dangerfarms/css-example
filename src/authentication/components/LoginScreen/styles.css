@@ -1,0 +1,46 @@
+.card {
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 gray(65%);
+    margin: 0 auto;
+    overflow: hidden;
+    width: 400px;
+}
+
+.cardHeader {
+    align-items: center;
+    background: hsla(259, 78%, 20%, 1);
+    color: white;
+    display: flex;
+    height: 60px;
+    padding: 0 36px;
+    text-align: left;
+}
+
+.headerText {
+    font: 600 19px/19px 'Proxima Nova', sans-serif;
+}
+
+.form {
+    padding: 36px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.formInput {
+    margin-bottom: 16px;
+}
+
+.formFooter {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+}
+
+.formFooterText {
+    color: gray(70%);
+    font: 500 13px/13px 'Proxima Nova', sans-serif;
+}

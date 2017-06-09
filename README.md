@@ -1,6 +1,4 @@
-# Atlas Web App
-
-TODO: add a quick summary of the project's business case here.
+# Example CSS best practices project
 
 ## Setup
 
@@ -10,7 +8,7 @@ TODO: add a quick summary of the project's business case here.
 
 ## Architecture
 
-Atlas uses [React](https://facebook.github.io/react/), [Redux](http://redux.js.org/) and [CSS Modules](https://github.com/css-modules/css-modules).
+This example project uses [React](https://facebook.github.io/react/), [Redux](http://redux.js.org/) and [CSS Modules](https://github.com/css-modules/css-modules).
 
 ### Testing
 
